@@ -1,14 +1,14 @@
 
 from flask import Flask,jsonify
-from database_upload import database_conn,csv_file,filter_database,download_csv_file_database
-import upload_s3_bucket
+from database_upload import database_conn,csv_file,filter_database,download_csv_file_database,upload_s3_bucket1
+
 example = Flask(__name__)
 @example.route("/vbr/<value>", methods=["GET"])
 def data(value):
     name = 'yellow.csv'
     connection = database_conn.read()
     file=csv_file.csv(name,value,connection)
-    base=upload_s3_bucket.upload(file)
+    base=upload_s3_bucket1.upload(file)
     return jsonify(base)
 
 @example.route("/filter/<info>", methods=["GET"])
@@ -27,5 +27,5 @@ def down():
 
 
 if __name__=="__main__":
-   example.run(debug=True)
+   example.run(host='0.0.0.0')
 
