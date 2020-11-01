@@ -5,6 +5,6 @@ def read():
 
 
     #path=red.csv
-    path = "C:/Users/vanga/PycharmProjects/first project/yellow.csv"
+    path = "yellow.csv"
     return send_file(path, as_attachment=True)
 
